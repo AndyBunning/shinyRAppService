@@ -15,7 +15,7 @@ Run this script with appropriate Azure CLI authentication to set up the required
 """
 
 # Set variables
-RESOURCE_GROUP="shinyr-rg"
+RESOURCE_GROUP="OfwatShinyR"
 ACR_NAME="abshinyracr"
 APP_NAME="abshinyr-app"
 PLAN_NAME="abshinyr-plan"
