@@ -38,3 +38,4 @@ jobs:
       - name: Deploy to Azure App Service
         run: |
           az webapp config container set --name $AZURE_WEBAPP_NAME --resource-group $AZURE_RESOURCE_GROUP --docker-custom-image-name $ACR_NAME.azurecr.io/shinyr-app:${{ github.sha }} --docker-registry-server-url https://$ACR_NAME.azurecr.io
+
