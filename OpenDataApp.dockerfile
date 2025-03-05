@@ -10,7 +10,7 @@ RUN R -e "install.packages(c('shiny', 'ggplot2', 'dplyr'))"
 
 # Copy application files
 WORKDIR /srv/shiny-server
-COPY . .
+COPY /OpenDataApp/. .
 
 # Expose Shiny app port
 EXPOSE 3838
