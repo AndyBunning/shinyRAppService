@@ -13,7 +13,7 @@
 #   Date		        Remarks
 #	-----------	   ---------------------------------------------------------------
 #	 30/05/2024    Created script                                   JThompson (JT)
-#  05/03/2025    Commented 'sf' and updated local file URLs       ABunning (AB)
+#  05/03/2025    Comment 'sf', update local URLs, add app ports   ABunning (AB)
 #===============================  Environment Setup  ===========================
 #==========================================================================================
 
@@ -40,6 +40,10 @@ library(plotly)
 library(DT)
 library(Cairo)
 library(writexl)
+
+# Specify the application port
+options(shiny.host = "0.0.0.0")
+options(shiny.port = 8180)
 
 #'[================================================]
 #'[================================================]
