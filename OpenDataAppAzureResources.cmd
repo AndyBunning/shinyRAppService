@@ -33,4 +33,4 @@ az appservice plan create --name $PLAN_NAME --resource-group $RESOURCE_GROUP --s
 az webapp create --resource-group $RESOURCE_GROUP --plan $PLAN_NAME --name $APP_NAME --deployment-container-image-name $ACR_NAME.azurecr.io/shinyr-app:latest
 
 # Enable ACR authentication for App Service
-az webapp config container set --name $APP_NAME --resource-group $RESOURCE_GROUP --docker-custom-image-name $ACR_NAME.azurecr.io/shinyr-app:latest --docker-registry-server-url https://$ACR_NAME.azurecr.io
+az webapp config container set --name $APP_NAME --resource-group $RESOURCE_GROUP --docker-custom-image-name $ACR_NAME.azurecr.io/shinyr-app:latest --docker-registry-server-url https://$ACR_NAME.azurecr.io --settings WEBSITES_PORT=3838
