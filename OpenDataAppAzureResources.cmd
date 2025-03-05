@@ -15,10 +15,11 @@ Run this script with appropriate Azure CLI authentication to set up the required
 """
 
 # Set variables
-RESOURCE_GROUP="OfwatShinyR"
-ACR_NAME="abshinyracr"
-APP_NAME="abshinyr-app"
-PLAN_NAME="abshinyr-plan"
+$RESOURCE_GROUP="OfwatShinyR"
+$ACR_NAME="abshinyracr"
+$APP_NAME="abshinyr-app"
+$PLAN_NAME="abshinyr-plan"
+$WEBSITES_PORT=8180
 
 # Create resource group
 az group create --name $RESOURCE_GROUP --location uksouth
@@ -32,5 +33,8 @@ az appservice plan create --name $PLAN_NAME --resource-group $RESOURCE_GROUP --s
 # Create App Service for Container
 az webapp create --resource-group $RESOURCE_GROUP --plan $PLAN_NAME --name $APP_NAME --deployment-container-image-name $ACR_NAME.azurecr.io/shinyr-app:latest
 
+# Configure Container Port Number for the webapp
+az webapp config appsettings set --resource-group $RESOURCE_GROUP --name $APP_NAME --settings WEBSITES_PORT=$WEBSITES_PORT
+
 # Enable ACR authentication for App Service
-az webapp config container set --name $APP_NAME --resource-group $RESOURCE_GROUP --docker-custom-image-name $ACR_NAME.azurecr.io/shinyr-app:latest --docker-registry-server-url https://$ACR_NAME.azurecr.io --settings WEBSITES_PORT=8180
+az webapp config container set --resource-group $RESOURCE_GROUP --name $APP_NAME --docker-custom-image-name $ACR_NAME.azurecr.io/shinyr-app:latest --docker-registry-server-url https://$ACR_NAME.azurecr.io --settings WEBSITES_PORT=8180
